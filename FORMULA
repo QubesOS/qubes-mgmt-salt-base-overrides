@@ -1,0 +1,12 @@
+# vim: set syntax=yaml ts=2 sw=2 sts=2 et :
+
+name:          qubes-overrides-formula
+top_level_dir: qubes-overrides
+saltenv:       base
+version:       3.0.0
+release:       1
+os:            RedHat, Debian, Ubuntu, Suse, FreeBSD
+os_family:     RedHat, Debian, Suse, FreeBSD
+summary:       Custom modules to override existing Salt modules due to upstream bugs or implementation conflicts
+description: |
+  Custom modules to override existing Salt modules due to upstream bugs or implementation conflicts.
