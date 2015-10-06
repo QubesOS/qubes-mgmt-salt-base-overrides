@@ -28,7 +28,12 @@ ln -sf . %{name}-%{version}
 %build
 
 %install
-make install DESTDIR=%{buildroot} LIBDIR=%{_libdir} BINDIR=%{_bindir} SBINDIR=%{_sbindir} SYSCONFDIR=%{_sysconfdir}
+make install DESTDIR=%{buildroot} LIBDIR=%{_libdir} BINDIR=%{_bindir} SBINDIR=%{_sbindir} SYSCONFDIR=%{_sysconfdir} VERBOSE=%{_verbose}
+
+%post
+# Update Salt Configuration
+qubesctl state.sls qubes.config -l quiet --out quiet > /dev/null || true
+qubesctl saltutil.sync_all -l quiet --out quiet > /dev/null || true
 
 %files
 %defattr(-,root,root)
