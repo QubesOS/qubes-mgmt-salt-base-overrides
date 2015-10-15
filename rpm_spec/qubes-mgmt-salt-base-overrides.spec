@@ -10,6 +10,8 @@
 %{!?pillar_dir: %define pillar_dir %(make get-pillar_dir)}
 %{!?formula_dir: %define formula_dir %(make get-formula_dir)}
 
+%{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
+
 Name:      %{package_name}
 Version:   %{version}
 Release:   %{rel}%{?dist}
@@ -20,11 +22,24 @@ URL:	   http://www.qubes-os.org/
 Group:     System administration tools
 BuildArch: noarch
 Requires:  qubes-mgmt-salt
+Requires:  qubes-mgmt-salt-config
+Requires:  qubes-mgmt-salt-base-overrides-libs
 
 %define _builddir %(pwd)
 
 %description
 %{package_description}
+
+%package libs
+Summary:	Qubes+Salt management override libs
+Group:     System administration tools
+Requires:  qubes-mgmt-salt
+Requires:  python
+Requires:  python-wrapt
+BuildRequires:  python2-devel
+
+%description libs
+Qubes+Salt management override libs.
 
 %prep
 # we operate on the current directory, so no need to unpack anything
@@ -34,13 +49,17 @@ ln -sf . %{name}-%{version}
 %setup -T -D
 
 %build
+CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 
 %install
+%{__python} setup.py install -O1 --skip-build --install-lib %{python_sitearch} --root %{buildroot}
 make install DESTDIR=%{buildroot} LIBDIR=%{_libdir} BINDIR=%{_bindir} SBINDIR=%{_sbindir} SYSCONFDIR=%{_sysconfdir}
+
+%clean
+rm -rf build/ *.pyc *.pyo *.o *.a *~
 
 %post
 # Update Salt Configuration
-qubesctl state.sls config -l quiet --out quiet > /dev/null || true
 qubesctl saltutil.clear_cache -l quiet --out quiet > /dev/null || true
 qubesctl saltutil.sync_all refresh=true -l quiet --out quiet > /dev/null || true
 
@@ -48,5 +67,9 @@ qubesctl saltutil.sync_all refresh=true -l quiet --out quiet > /dev/null || true
 %defattr(-,root,root)
 %attr(750, root, root) %dir /srv/salt/_modules
 /srv/salt/_modules/localemod.py*
+
+%files libs
+%{python_sitearch}/qubes/*
+%{python_sitearch}/qubes.mgmt*-*-py?.?.egg-info
 
 %changelog

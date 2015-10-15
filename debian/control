@@ -4,7 +4,11 @@ Priority: extra
 Maintainer: Jason Mehring <nrgaway@gmail.com>
 Build-Depends:
     debhelper (>= 9~),
-    quilt
+    quilt,
+    dh-python, 
+    python-all (>= 2.6.6-3~),
+    python-setuptools
+X-Python-Version: 2.7
 Standards-Version: 3.9.5
 Homepage: http://www.qubes-os.org
 
@@ -12,5 +16,17 @@ Package: qubes-mgmt-salt-base-overrides
 Section: admin
 Architecture: all
 Depends:
-    qubes-mgmt-salt
+    qubes-mgmt-salt,
+    qubes-mgmt-salt-config,
+    qubes-mgmt-salt-base-overrides-libs
 Description: Custom modules to override existing Salt modules due to upstream bugs or implementation conflicts.
+
+Package: qubes-mgmt-salt-base-overrides-libs
+Section: libs
+Architecture: all
+Depends:
+    ${python:Depends},
+    qubes-mgmt-salt,
+    qubes-mgmt-salt-config,
+    python-wrapt 
+Description: Qubes+Salt management override libs.
