@@ -1,11 +1,10 @@
 %{!?version: %define version %(cat version)}
-%{!?rel: %define rel %(cat rel)}
 
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:      qubes-mgmt-salt-base-overrides
 Version:   %{version}
-Release:   %{rel}%{?dist}
+Release:   1%{?dist}
 Summary:   ustom modules to override existing Salt modules due to upstream bugs or implementation conflicts
 License:   GPL 2.0
 URL:	   http://www.qubes-os.org/
