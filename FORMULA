@@ -3,11 +3,11 @@
 package-name:       qubes-mgmt-salt-base-overrides
 name:               qubes-overrides-formula
 top_level_dir:      qubes-overrides
-formula-files:      README.rst LICENSE _modules
+formula-files:      _modules
 pillar-files:       
 test-formula-files: 
 test-pillar-files: 
-formula_root:       /srv/salt
+formula_dir:        /srv/salt
 saltenv:            base
 version:            3.0.0
 release:            1
