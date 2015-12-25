@@ -1,16 +1,13 @@
 # vim: set syntax=yaml ts=2 sw=2 sts=2 et :
 
 package-name:       qubes-mgmt-salt-base-overrides
+saltenv:            base
+version:            3.1.0
+release:            1
 name:               qubes-overrides-formula
 top_level_dir:      qubes-overrides
 formula-files:      _modules
-pillar-files:       
-test-formula-files: 
-test-pillar-files: 
-formula_dir:        /srv/salt
-saltenv:            base
-version:            3.0.0
-release:            1
+formula_dir:        $(MGMT_DEFAULT_STATE_DIR)
 os:                 RedHat, Debian, Ubuntu, Suse, FreeBSD
 os_family:          RedHat, Debian, Suse, FreeBSD
 summary:            Custom modules to override existing Salt modules due to upstream bugs or implementation conflicts

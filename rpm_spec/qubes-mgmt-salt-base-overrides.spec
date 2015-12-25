@@ -5,7 +5,7 @@
 Name:      qubes-mgmt-salt-base-overrides
 Version:   %{version}
 Release:   1%{?dist}
-Summary:   ustom modules to override existing Salt modules due to upstream bugs or implementation conflicts
+Summary:   Custom modules to override existing Salt modules due to upstream bugs or implementation conflicts
 License:   GPL 2.0
 URL:	   http://www.qubes-os.org/
 
@@ -19,10 +19,10 @@ Requires:  qubes-mgmt-salt-base-overrides-libs
 %define _builddir %(pwd)
 
 %description
-ustom modules to override existing Salt modules due to upstream bugs or implementation conflicts
+Custom modules to override existing Salt modules due to upstream bugs or implementation conflicts
 
 %package libs
-Summary:	Qubes+Salt management override libs
+Summary:   Qubes+Salt management override libs
 Group:     System administration tools
 Requires:  salt
 Requires:  salt-minion
