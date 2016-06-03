@@ -53,8 +53,8 @@ rm -rf build/ *.pyc *.pyo *.o *.a *~
 
 %post
 # Update Salt Configuration
-qubesctl saltutil.clear_cache -l quiet --out quiet > /dev/null || true
-qubesctl saltutil.sync_all refresh=true -l quiet --out quiet > /dev/null || true
+salt-call --local saltutil.clear_cache -l quiet --out quiet > /dev/null || true
+salt-call --local saltutil.sync_all refresh=true -l quiet --out quiet > /dev/null || true
 
 %files
 %defattr(-,root,root)
