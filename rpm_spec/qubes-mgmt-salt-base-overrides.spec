@@ -51,11 +51,6 @@ make install DESTDIR=%{buildroot} LIBDIR=%{_libdir} BINDIR=%{_bindir} SBINDIR=%{
 %clean
 rm -rf build/ *.pyc *.pyo *.o *.a *~
 
-%post
-# Update Salt Configuration
-qubesctl saltutil.clear_cache -l quiet --out quiet > /dev/null || true
-qubesctl saltutil.sync_all refresh=true -l quiet --out quiet > /dev/null || true
-
 %files
 %defattr(-,root,root)
 %doc LICENSE README.rst
