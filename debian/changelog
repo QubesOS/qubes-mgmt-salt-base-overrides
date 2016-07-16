@@ -1,3 +1,10 @@
+qubes-mgmt-salt-base-overrides (3.2.1-1) wheezy; urgency=medium
+
+  * Revert "rpm: use salt-call --local instead of qubesctl"
+  * Drop post installation scripts at all
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Sun, 17 Jul 2016 01:34:01 +0200
+
 qubes-mgmt-salt-base-overrides (3.2.0-1) wheezy; urgency=medium
 
   * travis: initial version
