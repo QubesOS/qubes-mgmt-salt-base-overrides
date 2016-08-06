@@ -1,6 +1,6 @@
 %{!?version: %define version %(cat version)}
 
-%{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
+#%{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:      qubes-mgmt-salt-base-overrides
 Version:   %{version}
@@ -45,7 +45,7 @@ ln -sf . %{name}-%{version}
 CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 
 %install
-%{__python} setup.py install -O1 --skip-build --install-lib %{python_sitearch} --root %{buildroot}
+%{__python} setup.py install -O1 --skip-build --install-lib %{python_sitelib} --root %{buildroot}
 make install DESTDIR=%{buildroot} LIBDIR=%{_libdir} BINDIR=%{_bindir} SBINDIR=%{_sbindir} SYSCONFDIR=%{_sysconfdir}
 
 %clean
@@ -63,7 +63,7 @@ salt-call --local saltutil.sync_all refresh=true -l quiet --out quiet > /dev/nul
 /srv/salt/_modules/localemod.py*
 
 %files libs
-%{python_sitearch}/qubes/*
-%{python_sitearch}/qubes.mgmt*-*-py?.?.egg-info
+%{python_sitelib}/qubes/*
+%{python_sitelib}/qubes.mgmt*-*-py?.?.egg-info
 
 %changelog
