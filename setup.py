@@ -2,12 +2,12 @@
 
 from distutils.core import setup
 
-setup(name               = 'qubes.mgmt.patches',
+setup(name               = 'qubessaltpatches',
       version            = '1.0',
       author             = 'Jason Mehring',
       author_email       = 'nrgaway@gmail.com',
       url                = 'https://github.com/nrgaway/qubes-mgmt-salt-base-overrides',
-      packages           = ['qubes', 'qubes.mgmt', 'qubes.mgmt.patches'],
+      packages           = ['qubessaltpatches'],
       package_dir        = {'': 'src'},
       license            ='LICENSE',
       description        = 'Custom modules to override existing Salt modules ' \

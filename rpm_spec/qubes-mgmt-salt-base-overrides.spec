@@ -58,7 +58,7 @@ rm -rf build/ *.pyc *.pyo *.o *.a *~
 /srv/salt/_modules/localemod.py*
 
 %files libs
-%{python_sitelib}/qubes/*
-%{python_sitelib}/qubes.mgmt*-*-py?.?.egg-info
+%{python_sitelib}/qubessaltpatches/*
+%{python_sitelib}/qubessaltpatches*-*-py?.?.egg-info
 
 %changelog
