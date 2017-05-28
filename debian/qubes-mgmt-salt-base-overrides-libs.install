@@ -1,5 +1,4 @@
-/usr/lib/python2.7/dist-packages/qubes/mgmt/__init__.py*
-/usr/lib/python2.7/dist-packages/qubes/mgmt/patches/__init__.py*
-/usr/lib/python2.7/dist-packages/qubes/mgmt/patches/update.py*
-/usr/lib/python2.7/dist-packages/qubes/mgmt/patches/url.py*
-/usr/lib/python2.7/dist-packages/qubes.mgmt.patches-1.0.egg-info
+/usr/lib/python2.7/dist-packages/qubessaltpatches/__init__.py*
+/usr/lib/python2.7/dist-packages/qubessaltpatches/update.py*
+/usr/lib/python2.7/dist-packages/qubessaltpatches/url.py*
+/usr/lib/python2.7/dist-packages/qubessaltpatches-*.egg-info
