@@ -1,3 +1,14 @@
+qubes-mgmt-salt-base-overrides (4.0.1-1) unstable; urgency=medium
+
+  * travis: drop debootstrap workaround
+  * Move salt patches out of qubes module
+  * Backport fix for loading included configs
+  * travis: update to Qubes 4.0
+  * debian: fix packaging after renaming python module
+  * travis: add build of VM packages
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Wed, 05 Jul 2017 15:53:28 +0200
+
 qubes-mgmt-salt-base-overrides (4.0.0-1) wheezy; urgency=medium
 
   [ Bahtiar `kalkin-` Gadimov ]
