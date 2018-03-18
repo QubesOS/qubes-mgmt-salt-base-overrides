@@ -1,9 +1,8 @@
-%{!?version: %define version %(cat version)}
 
 #%{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:      qubes-mgmt-salt-base-overrides
-Version:   %{version}
+Version:   @VERSION@
 Release:   1%{?dist}
 Summary:   Custom modules to override existing Salt modules due to upstream bugs or implementation conflicts
 License:   GPL 2.0
@@ -16,7 +15,8 @@ Requires:  salt-minion
 Requires:  qubes-mgmt-salt-config
 Requires:  qubes-mgmt-salt-base-overrides-libs
 
-%define _builddir %(pwd)
+
+Source0: %{name}-%{version}.tar.gz
 
 %description
 Custom modules to override existing Salt modules due to upstream bugs or implementation conflicts
@@ -35,11 +35,7 @@ BuildRequires:  python2-devel
 Qubes+Salt management override libs.
 
 %prep
-# we operate on the current directory, so no need to unpack anything
-# symlink is to generate useful debuginfo packages
-rm -f %{name}-%{version}
-ln -sf . %{name}-%{version}
-%setup -T -D
+%setup -q
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
