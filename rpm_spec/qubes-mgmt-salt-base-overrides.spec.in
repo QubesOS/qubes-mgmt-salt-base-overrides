@@ -58,3 +58,4 @@ rm -rf build/ *.pyc *.pyo *.o *.a *~
 %{python_sitelib}/qubessaltpatches*-*-py?.?.egg-info
 
 %changelog
+@CHANGELOG@
